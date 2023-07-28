@@ -11,7 +11,7 @@ const Header = (props) => {
   const [modal, modalChange] = useState(false);
   const [modalHeart, modalHeartChange] = useState(false);
   //   const [profile, setProfile] = useState("img/default_profile.png");
-  const [profile, setProfile] = useState("/images/kuromi.png");
+  const [profile, setProfile] = useState("/images/default_profile.png");
 
   const closeModal = () => {
     modalChange(!modal);
@@ -46,52 +46,51 @@ const Header = (props) => {
               <Link href="/">
                 <Image
                   className={styles.main_instagram_logo}
-                  src={"/images/kuromi.png"}
+                  src={"/images/instagramlogo.png"}
                   alt="instagramlogo"
                   width={105}
                   height={105}
                 />
               </Link>
             </div>
-            <div aria-controls="navbarScroll">
-              <div id="navbarScroll">
-                <Nav
-                  className="me-auto my-2 my-lg-0"
-                  style={{ maxHeight: "80" }}
-                  navbarScroll
-                >
-                  <div className={styles.navlink_div}>
-                    <Link href="/main">
-                      <Image
-                        className={styles.header_home}
-                        src={"/images/kuromi.png"}
-                        alt="header_home"
-                        width={105}
-                        height={105}
-                      />
-                    </Link>
+            <div aria-controls="navbarScroll" />
+            <div id="navbarScroll">
+              <Nav
+                className="me-auto my-2 my-lg-0"
+                style={{ maxHeight: "80" }}
+                navbarScroll
+              >
+                <div className={styles.navlink_div}>
+                  <Link href="/">
+                    <Image
+                      className={styles.header_home}
+                      src={"/images/header_home.png"}
+                      alt="header_home"
+                      width={105}
+                      height={105}
+                    />
+                  </Link>
 
-                    <Link href="/main_edit_file">
-                      <Image
-                        className={styles.header_edit}
-                        src={"/images/kuromi.png"}
-                        alt="header_edit"
-                        width={105}
-                        height={105}
-                      />
-                    </Link>
+                  <Link href="/main_edit_file">
+                    <Image
+                      className={styles.header_edit}
+                      src={"/images/header_edit.png"}
+                      alt="header_edit"
+                      width={105}
+                      height={105}
+                    />
+                  </Link>
 
-                    <div
-                      className={styles.navbarScrollingDropdown}
-                      onClick={() => {
-                        modalChange(true);
-                      }}
-                    >
-                      {mainProfileImage}
-                    </div>
+                  <div
+                    className={styles.navbarScrollingDropdown}
+                    onClick={() => {
+                      modalChange(!modal);
+                    }}
+                  >
+                    {mainProfileImage}
                   </div>
-                </Nav>
-              </div>
+                </div>
+              </Nav>
             </div>
           </div>
         </Container>
