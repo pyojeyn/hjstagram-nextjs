@@ -6,11 +6,11 @@ import { useRouter } from "next/router";
 function LoginPage(props) {
   const router = useRouter();
 
-  async function onLoginHandler(enderedLogin) {
-    console.log("enderedLogin", enderedLogin);
+  async function onLoginHandler(enteredLogin) {
+    console.log("enderedLogin", enteredLogin);
     const repsonse = await fetch("/api/auth/login", {
       method: "POST",
-      body: JSON.stringify(enderedLogin),
+      body: JSON.stringify(enteredLogin),
       headers: {
         "Content-Type": "application/json",
       },

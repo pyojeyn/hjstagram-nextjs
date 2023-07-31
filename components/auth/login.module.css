@@ -1,23 +1,28 @@
 /* login, signup, sendemail, signup scss */
 
-.html {
+/* globals.css 로 옮김 */
+/* .html {
   overflow-y: scroll;
-}
+} */
 
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800");
 
+/* globals.css 로 옮김 */
 /* * {
   box-sizing: border-box;
 } */
-.body {
+
+/* globals.css 로 옮김 */
+/* .body {
   background: #fafafa !important;
   min-height: 100vh;
   display: flex;
   font-weight: 400;
   font-family: "Fira Sans", sans-serif;
-}
+} */
 
-.h1,
+/* globals.css 로 옮김 */
+/* .h1,
 .h2,
 .h3,
 .h4,
@@ -27,7 +32,7 @@
 .span {
   font-weight: 500;
   font-family: "Fira Sans", sans-serif;
-}
+} */
 
 .auth-wrapper {
   width: 100%;
@@ -132,16 +137,15 @@
 }
 
 .login {
-  /* @extend .sign-up; */
-  /* .a {
-    color: #4395ff;
-    text-decoration-line: none;
-    font-weight: bolder;
-  } */
+  text-align: center;
+  font-size: 15px;
+  padding-top: 10px;
+  color: #7f7d7d;
+  font-weight: bolder;
 }
 
 .login {
-  .a {
+  .loginLink {
     color: #4395ff;
     text-decoration-line: none;
     font-weight: bolder;
