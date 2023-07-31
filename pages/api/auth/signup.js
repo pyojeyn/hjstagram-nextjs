@@ -1,6 +1,7 @@
 import User from "@/models/user";
 import Joi from "joi";
 import dbConnect from "@/utils/db/dbConnect";
+import { serialize } from "cookie";
 
 async function signupHandler(req, res) {
   if (req.method === "POST") {
@@ -38,13 +39,17 @@ async function signupHandler(req, res) {
       await user.setPassword(password);
       await user.save();
 
-      res.body(user.serialize());
-
       const token = user.generateToken();
-      res.cookies.set("hjstagramToken", token, {
-        maxAge: 1000 * 60 * 60 * 24,
-        httpOnly: true,
-      });
+      res.setHeader(
+        "Set-Cookie",
+        serialize("hjstagramToken", token, {
+          maxAge: 1000 * 60 * 60 * 24,
+          httpOnly: true,
+          path: "/", // 쿠키를 설정할 경로를 지정합니다. 원하는 경로로 변경할 수 있습니다.
+        })
+      );
+
+      res.json({ user: user.serialize() });
     } catch (e) {
       throw (500, e);
     }

@@ -1,12 +1,87 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./login.module.css";
+import useInput from "@/hooks/use-input";
 
 // 각각 input 들에 onChange, Blur 해놔야함. use-input 훅 이용
+// 비밀번호가 틀렸는지 여부, 사용자 이메일, 아이디 존재 여부는 서버 다녀왔다가 한꺼번에 표시 해주기;
+// 프론트에서 바로바로 알려주는거는 유효성만으로 가자.
+
+const isEmail = (value) => {
+  let regExp = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+  return regExp.test(value);
+};
+
+const isUsername = (value) => {
+  let regExp = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{2,10}$/;
+  return regExp.test(value);
+};
+
+const isPassword = (value) => {
+  let regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,15}$/;
+  return regExp.test(value);
+};
+
+const isNotEmpty = (value) => value.trim() !== "";
 
 function SignUp(props) {
-  const onSubmitHandler = () => {};
+  // 이메일 유효성
+  const {
+    value: emailValue,
+    isValid: emailIsValid,
+    hasError: emailHasError,
+    valueChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHandler,
+    reset: resetEmail,
+  } = useInput(isEmail);
+
+  // 아이디 유효성
+  const {
+    value: usernameValue,
+    isValid: usernameIsValid,
+    hasError: usernameHasError,
+    valueChangeHandler: usernameChangeHandler,
+    inputBlurHandler: usernameBlueHandler,
+    reset: resetUsername,
+  } = useInput(isUsername);
+
+  // 비밀번호 유효성
+  const {
+    value: passwordValue,
+    isValid: passwordIsValid,
+    hasError: passwordHasError,
+    valueChangeHandler: passwordChangeHandler,
+    inputBlurHandler: passwordBlurHandler,
+    reset: resetPassword,
+  } = useInput(isPassword);
+
+  // 이름 유효성
+  const {
+    value: nameValue,
+    isValid: nameIsValid,
+    hasError: nameHasError,
+    valueChangeHandler: nameChangeHandler,
+    inputBlurHandler: nameBlurHandler,
+    reset: resetName,
+  } = useInput(isNotEmpty);
+
+  let formIsValid = false;
+
+  if (usernameIsValid && emailIsValid && passwordIsValid && nameIsValid) {
+    formIsValid = true;
+  }
+
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    const signupInputs = {
+      email: emailValue,
+      username: usernameValue,
+      name: nameValue,
+      password: passwordValue,
+    };
+    props.onSignup(signupInputs);
+  };
 
   return (
     <>
@@ -35,11 +110,25 @@ function SignUp(props) {
                 type="text"
                 className="form-control"
                 placeholder="이메일 주소"
+                onChange={emailChangeHandler}
+                onBlur={emailBlurHandler}
               />
+              {emailHasError && (
+                <p className={styles.Msg}>이메일을 올바르게 입력해주세요.</p>
+              )}
             </div>
 
             <div className={styles["form-group"]}>
-              <input type="text" className="form-control" placeholder="이름" />
+              <input
+                type="text"
+                className="form-control"
+                placeholder="이름"
+                onChange={nameChangeHandler}
+                onBlur={nameBlurHandler}
+              />
+              {nameHasError && (
+                <p className={styles.Msg}>이름을 입력해주세요.</p>
+              )}
             </div>
 
             <div className={styles["form-group"]}>
@@ -47,7 +136,14 @@ function SignUp(props) {
                 type="text"
                 className="form-control"
                 placeholder="사용자 아이디"
+                onChange={usernameChangeHandler}
+                onBlur={usernameBlueHandler}
               />
+              {usernameHasError && (
+                <p className={styles.Msg}>
+                  사용자이름은 한글, 영문, 숫자만 가능하며 2-10자리 가능합니다
+                </p>
+              )}
             </div>
 
             <div className={styles["form-group"]}>
@@ -55,7 +151,14 @@ function SignUp(props) {
                 type="password"
                 className="form-control"
                 placeholder="비밀번호"
+                onChange={passwordChangeHandler}
+                onBlur={passwordBlurHandler}
               />
+              {passwordHasError && (
+                <p className={styles.Msg}>
+                  8 ~ 15자 영문 또는 숫자로 입력해주세요.
+                </p>
+              )}
             </div>
 
             <div className={styles["form-group"]}></div>
