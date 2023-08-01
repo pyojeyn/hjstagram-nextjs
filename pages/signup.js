@@ -23,16 +23,12 @@ function SignUpPage(props) {
     });
 
     const data = await response.json();
-
-    console.log("response", response.status);
     const status = response.status;
 
     if (status !== 200) {
       setSignupStatus({ status: status, message: data.message });
       return;
     }
-
-    console.log("data", data);
 
     router.push("/main");
   }

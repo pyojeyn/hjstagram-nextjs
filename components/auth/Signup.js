@@ -1,4 +1,3 @@
-import { use, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./login.module.css";
@@ -34,7 +33,6 @@ function SignUp(props) {
     hasError: emailHasError,
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
-    reset: resetEmail,
   } = useInput(isEmail);
 
   // 아이디 유효성
@@ -44,7 +42,6 @@ function SignUp(props) {
     hasError: usernameHasError,
     valueChangeHandler: usernameChangeHandler,
     inputBlurHandler: usernameBlueHandler,
-    reset: resetUsername,
   } = useInput(isUsername);
 
   // 비밀번호 유효성
@@ -54,7 +51,6 @@ function SignUp(props) {
     hasError: passwordHasError,
     valueChangeHandler: passwordChangeHandler,
     inputBlurHandler: passwordBlurHandler,
-    reset: resetPassword,
   } = useInput(isPassword);
 
   // 이름 유효성
@@ -64,7 +60,6 @@ function SignUp(props) {
     hasError: nameHasError,
     valueChangeHandler: nameChangeHandler,
     inputBlurHandler: nameBlurHandler,
-    reset: resetName,
   } = useInput(isNotEmpty);
 
   let formIsValid = false;

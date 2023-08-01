@@ -1,20 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./login.module.css";
-import { useRef, useState } from "react";
-import useInput from "@/hooks/use-input";
+import { useRef } from "react";
 
-const isNotEmpty = (value) => value.trim() !== "";
-
-const LoginForm = ({ onLogin }) => {
+const LoginForm = ({ onLogin, loginStatus }) => {
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
 
-  const [userNameMsg, setUserNameMsg] = useState(null);
-
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    console.log("hello onSubmit Handler");
 
     const enteredUsername = usernameInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
@@ -26,9 +20,6 @@ const LoginForm = ({ onLogin }) => {
 
     onLogin(loginInputs);
   };
-
-  // 해야할것 : onChange 바뀔때마다 내가 만들어논 use-input 훅 접목시켜보기 !
-  // validForm 레포랑 loginWithEmailAndPassword 레포 참고해보기
 
   return (
     <div className={styles["auth-wrapper"]}>
@@ -69,8 +60,6 @@ const LoginForm = ({ onLogin }) => {
             로그인
           </button>
 
-          {userNameMsg && <p className={`${styles["Msg3"]}`}>{userNameMsg}</p>}
-
           <p className={`${styles["forgot-password"]} ${styles["text-right"]}`}>
             <Link
               href="/recover_password"
@@ -86,6 +75,8 @@ const LoginForm = ({ onLogin }) => {
               가입하기
             </Link>
           </p>
+
+          {loginStatus && <p>{loginStatus.message}</p>}
         </form>
       </div>
     </div>
