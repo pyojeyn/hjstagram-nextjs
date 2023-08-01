@@ -26,7 +26,7 @@ async function signupHandler(req, res) {
 
     try {
       await dbConnect();
-      console.log("MongoDB connected!");
+      console.log("signup, MongoDB connected!");
 
       const existsByUsername = await User.findByUsername(username);
       if (existsByUsername) {
@@ -58,7 +58,7 @@ async function signupHandler(req, res) {
         serialize("hjstagramToken", token, {
           maxAge: 1000 * 60 * 60 * 24,
           httpOnly: true,
-          path: "/", // 쿠키를 설정할 경로를 지정합니다. 원하는 경로로 변경할 수 있습니다.
+          path: "/main", // 쿠키를 설정할 경로를 지정합니다. 원하는 경로로 변경할 수 있습니다.
         })
       );
 
@@ -66,8 +66,8 @@ async function signupHandler(req, res) {
     } catch (e) {
       throw (500, e);
     } finally {
-      console.log("MongoDB closed!");
       await dbClose();
+      console.log("signup, MongoDB closed!");
     }
   }
 }

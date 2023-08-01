@@ -20,7 +20,7 @@ function LoginPage(props) {
 
     console.log("data", data);
 
-    router.push("/");
+    router.push("/main");
   }
 
   return (

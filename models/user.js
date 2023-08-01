@@ -99,5 +99,9 @@ UserSchema.statics.findByEmail = function (email) {
   return this.findOne({ email });
 };
 
-const User = mongoose.model.users || mongoose.model("User", UserSchema);
+// 기존
+// const User = mongoose.model.users || mongoose.model("User", UserSchema);
+
+// 수정 후. -> Error [OverwriteModelError]: Cannot overwrite `User` model once compiled. 문제 해결
+const User = mongoose.models.User || mongoose.model("User", UserSchema);
 export default User;
