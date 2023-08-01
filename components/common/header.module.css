@@ -1,0 +1,68 @@
+.navbar {
+  height: 60px;
+  width: 100%;
+  border: 1px solid rgb(211, 211, 211);
+  background: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.navbarContainer {
+  /* position: relative; */
+  /* top: 50%; */
+  /* left: 50%; */
+  /* text-align: center; */
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 9px auto;
+}
+
+.navlinkDiv {
+  display: inline-flex;
+  position: relative;
+  /* left: 200px; */
+  /* top: 2px; */
+}
+
+.headerHome {
+  position: relative;
+  width: 37px;
+  margin-right: 13px;
+}
+
+.headerEdit {
+  /* @extend .header_home; */
+  position: relative;
+  width: 37px;
+  margin-right: 17px;
+}
+
+/* .navbarScrollingDropdown {
+  top: 2.5px;
+  position: relative;
+  margin-left: 5px;
+  cursor: pointer;
+} */
+
+.mainProfileImageBox {
+  width: 34px;
+  height: 34px;
+  border-radius: 70%;
+  overflow: hidden;
+  margin-top: 1.6px;
+}
+
+/* .mainProfileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} */
+
+/* .mainInstagramLogo {
+  position: relative;
+  top: 12px;
+} */

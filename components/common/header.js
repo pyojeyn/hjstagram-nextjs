@@ -1,11 +1,13 @@
 import { Container, Nav } from "react-bootstrap";
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import styles from "./header.module.css";
+
 // import useHttp from "@/hooks/use-http";
 
 import ModalMainProfile from "../main/ModalMainProfile";
-import styles from "../main/main.module.css";
+// import styles from "../main/main.module.css";
 
 const Header = (props) => {
   const [modal, modalChange] = useState(false);
@@ -26,74 +28,62 @@ const Header = (props) => {
     setProfile(props.profile);
   }
   const mainProfileImage = (
-    <div className={styles.main_profileImage_box}>
-      <Image
-        className={styles.main_profileImage}
-        src={profile}
-        alt="main_profileImage"
-        width={105}
-        height={105}
-      />
-    </div>
+    <Image
+      className={styles.mainProfileImageBox}
+      src={profile}
+      alt="main_profileImage"
+      width={37}
+      height={37}
+    />
   );
 
   return (
     <>
-      <header className={styles.navber}>
-        <Container>
-          <div className="navbar_Container">
-            <div className="NavbarBrand">
-              <Link href="/">
-                <Image
-                  className={styles.main_instagram_logo}
-                  src={"/images/instagramlogo.png"}
-                  alt="instagramlogo"
-                  width={105}
-                  height={105}
-                />
-              </Link>
-            </div>
-            <div aria-controls="navbarScroll" />
-            <div id="navbarScroll">
-              <Nav
-                className="me-auto my-2 my-lg-0"
-                style={{ maxHeight: "80" }}
-                navbarScroll
-              >
-                <div className={styles.navlink_div}>
-                  <Link href="/">
-                    <Image
-                      className={styles.header_home}
-                      src={"/images/header_home.png"}
-                      alt="header_home"
-                      width={105}
-                      height={105}
-                    />
-                  </Link>
+      <header className={styles.navbar}>
+        <div className={styles.navbarContainer}>
+          <div>
+            <Link href="/">
+              <Image
+                className={styles.mainInstagramLogo}
+                src={"/images/instagramlogo.png"}
+                alt="instagramlogo"
+                width={105}
+                height={41}
+              />
+            </Link>
+          </div>
 
-                  <Link href="/main_edit_file">
-                    <Image
-                      className={styles.header_edit}
-                      src={"/images/header_edit.png"}
-                      alt="header_edit"
-                      width={105}
-                      height={105}
-                    />
-                  </Link>
+          <div className={styles.navlinkDiv}>
+            <Link href="/">
+              <Image
+                className={styles.headerHome}
+                src={"/images/header_home.png"}
+                alt="header_home"
+                width={37}
+                height={37}
+              />
+            </Link>
 
-                  <div
-                    className={styles.navbarScrollingDropdown}
-                    onClick={() => {
-                      modalChange(!modal);
-                    }}
-                  >
-                    {mainProfileImage}
-                  </div>
-                </div>
-              </Nav>
+            <Link href="/main_edit_file">
+              <Image
+                className={styles.headerEdit}
+                src={"/images/header_edit.png"}
+                alt="header_edit"
+                width={37}
+                height={37}
+              />
+            </Link>
+
+            <div
+              className={styles.navbarScrollingDropdown}
+              onClick={() => {
+                modalChange(!modal);
+              }}
+            >
+              {mainProfileImage}
             </div>
           </div>
-        </Container>
+        </div>
       </header>
 
       {modal === true ? <ModalMainProfile closeModal={closeModal} /> : null}
