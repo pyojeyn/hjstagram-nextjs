@@ -1,4 +1,4 @@
-import moongoos, { Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -99,5 +99,5 @@ UserSchema.statics.findByEmail = function (email) {
   return this.findOne({ email });
 };
 
-const User = moongoos.model("User", UserSchema);
+const User = mongoose.model.users || mongoose.model("User", UserSchema);
 export default User;

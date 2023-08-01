@@ -1,7 +1,7 @@
 import User from "@/models/user";
 import Joi from "joi";
-import dbConnect from "@/utils/db/dbConnect";
 import { serialize } from "cookie";
+import { dbConnect, dbClose } from "@/utils/db/dbConnect";
 
 async function signupHandler(req, res) {
   if (req.method === "POST") {
@@ -15,7 +15,10 @@ async function signupHandler(req, res) {
     const result = schema.validate(req.body);
     if (result.error) {
       console.log(result.error);
-      res.status(400).message("data is Not Valid").body(result.error);
+      //   res.status(400).message("data is Not Valid").body(result.error);
+      res
+        .status(400)
+        .json({ message: "Data is Not Valid!", error: result.error });
       return;
     }
 
@@ -23,9 +26,19 @@ async function signupHandler(req, res) {
 
     try {
       await dbConnect();
-      const exists = await User.findByUsername(username);
-      if (exists) {
-        res.status(409);
+      console.log("MongoDB connected!");
+
+      const existsByUsername = await User.findByUsername(username);
+      if (existsByUsername) {
+        console.log("existsByUsername");
+        res.status(409).json({ message: "Username already exist!" });
+        return;
+      }
+
+      const existsByEmail = await User.findByEmail(email);
+      if (existsByEmail) {
+        console.log("existsByEmail");
+        res.status(409).json({ message: "Email already exist!" });
         return;
       }
 
@@ -52,6 +65,9 @@ async function signupHandler(req, res) {
       res.json({ user: user.serialize() });
     } catch (e) {
       throw (500, e);
+    } finally {
+      console.log("MongoDB closed!");
+      await dbClose();
     }
   }
 }

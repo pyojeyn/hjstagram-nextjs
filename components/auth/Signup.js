@@ -26,6 +26,7 @@ const isPassword = (value) => {
 const isNotEmpty = (value) => value.trim() !== "";
 
 function SignUp(props) {
+  console.log("props.sigupStatus", props.signupStatus);
   // 이메일 유효성
   const {
     value: emailValue,
@@ -173,6 +174,8 @@ function SignUp(props) {
                 로그인
               </Link>
             </p>
+
+            {props.signupStatus && <p>{props.signupStatus.message}</p>}
           </form>
         </div>
       </div>
