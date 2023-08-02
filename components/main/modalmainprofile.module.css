@@ -1,0 +1,43 @@
+.modalBackgroundWhite {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0);
+  z-index: 500;
+  /*  999였던거 500으로 바꿈 팔로잉 팔로우 버튼 안눌려가지고 */
+}
+
+.modalMainProfile {
+  position: relative;
+  margin: 0 auto;
+  left: 550px;
+  top: 50px;
+  width: 200px;
+  height: 100px;
+  border-radius: 0.7rem;
+  background-color: white;
+  border: 1px solid rgb(214, 214, 214);
+  text-decoration-line: none;
+}
+
+.modalMainProfileText {
+  .myParagraph {
+    /* color: $modal-text; */
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 6%;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+.modalTextBlue {
+  text-decoration: none;
+  color: inherit;
+  span.my-span:hover {
+    text-decoration: none;
+  }
+}

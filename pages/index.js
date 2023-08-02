@@ -24,6 +24,7 @@ function LoginPage(props) {
 
     const data = await repsonse.json();
     const status = repsonse.status;
+    console.log("loginstatus", status);
 
     if (status !== 200) {
       setLoginStatus({ status, message: data.message });

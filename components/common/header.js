@@ -15,6 +15,8 @@ const Header = (props) => {
   //   const [profile, setProfile] = useState("img/default_profile.png");
   const [profile, setProfile] = useState("/images/default_profile.png");
 
+  console.log("렌더링시 modal", modal);
+
   const closeModal = () => {
     modalChange(!modal);
   };
@@ -86,7 +88,9 @@ const Header = (props) => {
         </div>
       </header>
 
-      {modal === true ? <ModalMainProfile closeModal={closeModal} /> : null}
+      {modal && (
+        <ModalMainProfile closeModal={closeModal} onLogout={props.onLogout} />
+      )}
     </>
   );
 };

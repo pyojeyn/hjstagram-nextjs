@@ -394,7 +394,7 @@ textarea.my-textarea:focus {
 }
 
 .modal_main_profile_text {
-  p.my-paragraph {
+  .my-paragraph {
     /* color: $modal-text; */
     font-weight: bolder;
     text-align: center;
