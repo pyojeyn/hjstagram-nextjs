@@ -65,9 +65,9 @@
 .modalTextBlue {
   text-decoration: none;
   color: inherit;
-  span:hover {
+  /* span:hover {
     text-decoration: none;
-  }
+  } */
 }
 .modalBackgroundWhite {
   position: fixed;

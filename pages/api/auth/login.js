@@ -37,7 +37,7 @@ async function loginHandler(req, res) {
         serialize("hjstagramToken", token, {
           maxAge: 1000 * 60 * 60 * 24,
           httpOnly: true,
-          path: "/main",
+          path: "/",
         })
       );
 

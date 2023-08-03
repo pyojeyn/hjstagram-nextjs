@@ -58,7 +58,7 @@ async function signupHandler(req, res) {
         serialize("hjstagramToken", token, {
           maxAge: 1000 * 60 * 60 * 24,
           httpOnly: true,
-          path: "/main", // 쿠키를 설정할 경로를 지정합니다. 원하는 경로로 변경할 수 있습니다.
+          path: "/", // 쿠키를 설정할 경로를 지정합니다. 원하는 경로로 변경할 수 있습니다.
         })
       );
 

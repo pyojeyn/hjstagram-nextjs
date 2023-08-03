@@ -5,8 +5,14 @@ import styles from "./profile.module.css";
 import { useState } from "react";
 import Image from "next/image";
 import ModalProfileGear from "./modal-profile-gear";
+import { useSelector } from "react-redux";
 
 const Profile = (props) => {
+  console.log("Hello Profile Component!");
+  console.log("props.user", props.user);
+
+  console.log("props.user.profileurl", props.user.profileurl);
+
   const [gear, gearChange] = useState(false);
 
   const [isShowProfile, setIsShowProfile] = useState(false);
@@ -20,7 +26,7 @@ const Profile = (props) => {
       {props.username}
       <Image
         className={styles.profileGear}
-        src="images/gear.png"
+        src="/images/gear.png"
         alt="gear"
         width={30}
         height={30}
@@ -37,7 +43,7 @@ const Profile = (props) => {
     >
       <Image
         className={styles.profileProfileImage}
-        src={props.profileurl}
+        src={props.user.profileurl}
         alt="profileImage"
         width={30}
         height={30}

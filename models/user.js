@@ -37,7 +37,7 @@ const UserSchema = new Schema({
   followerPeople: [String],
   profileurl: {
     type: String,
-    default: "/img/default_profile.png",
+    default: "/images/default_profile.png",
   },
 });
 

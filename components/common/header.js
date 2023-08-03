@@ -15,8 +15,6 @@ const Header = (props) => {
   //   const [profile, setProfile] = useState("img/default_profile.png");
   const [profile, setProfile] = useState("/images/default_profile.png");
 
-  console.log("렌더링시 modal", modal);
-
   const closeModal = () => {
     modalChange(!modal);
   };
