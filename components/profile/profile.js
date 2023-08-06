@@ -23,13 +23,13 @@ const Profile = (props) => {
 
   const username = (
     <div className={styles.profileUsername}>
-      {props.username}
+      {props.user.username}
       <Image
         className={styles.profileGear}
         src="/images/gear.png"
         alt="gear"
         width={30}
-        height={30}
+        height={33.64}
         onClick={() => {
           gearChange(!gear);
         }}
@@ -45,8 +45,8 @@ const Profile = (props) => {
         className={styles.profileProfileImage}
         src={props.user.profileurl}
         alt="profileImage"
-        width={30}
-        height={30}
+        width={150}
+        height={150}
         onClick={() => {
           setIsShowProfile(!isShowProfile);
         }}
@@ -64,7 +64,9 @@ const Profile = (props) => {
       </div>
 
       <div className={styles.profileProfileDiv2}>
-        <div className={styles.profileProfileText}>게시물 {props.postNum}</div>
+        <div className={styles.profileProfileText}>
+          게시물 {props.user.postsNum}
+        </div>
 
         <div
           className={styles.profileProfileText}
@@ -72,7 +74,7 @@ const Profile = (props) => {
             setIsShowFollower(!isShowFollower);
           }}
         >
-          팔로워 {props.followerNum}
+          팔로워 {props.user.followerNum}
         </div>
 
         <div
@@ -81,12 +83,12 @@ const Profile = (props) => {
             setIsShowFollow(!isShowFollow);
           }}
         >
-          팔로우 {props.followingNum}
+          팔로우 {props.user.followingNum}
         </div>
       </div>
 
       <div className={styles.profileProfileDiv2}>
-        <div className={styles.profileProfileName}>{props.name}</div>
+        <div className={styles.profileProfileName}>{props.user.name}</div>
       </div>
 
       <div className={styles.profileProfileDiv2}>

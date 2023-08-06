@@ -128,7 +128,6 @@
 }
 
 .profileGear {
-  width: 30px;
   position: relative;
   left: 40px;
   bottom: 2px;
@@ -149,17 +148,16 @@
   overflow: hidden;
   position: relative;
   left: 200px;
-  top: 100px;
 }
 
 .closefriendsProfileImageBox {
-  width: 55px;
-  height: 55px;
+  width: 150px;
+  height: 150px;
   border-radius: 70%;
   overflow: hidden;
   position: relative;
   right: 20px;
-  top: 25px;
+  top: 100px;
 }
 
 .modalProfileGear {
