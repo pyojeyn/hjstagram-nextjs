@@ -169,8 +169,131 @@
   border-radius: 0.7rem;
   background-color: white;
   left: calc(50vw - 200px);
+
+  .modalProfileGearP {
+    color: rgb(85, 85, 85);
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 6%;
+    cursor: pointer;
+  }
 }
 
 .modalProfileGearText {
   position: relative;
+}
+
+.modalProfileGearP {
+  color: rgb(85, 85, 85);
+  font-weight: bolder;
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 6%;
+  cursor: pointer;
+}
+
+.edit-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+}
+
+.edit-inner {
+  width: 450px;
+  margin: auto;
+  background: #ffffff;
+  /* // box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2); */
+  border: 1px solid rgb(228, 228, 228);
+  padding: 40px 55px 45px 55px;
+  /* border-radius: 15px; */
+  transition: all 0.3s;
+}
+
+.editProfileDiv {
+  position: relative;
+  width: 700px;
+  height: 550px;
+  top: 30px;
+  margin: 0 auto;
+}
+
+.editprofileProfileDiv {
+  position: relative;
+  left: 360px;
+  bottom: 20px;
+}
+
+.editprofileForm {
+  display: flex;
+  right: 30px;
+}
+
+.editprofileLabel {
+  font-weight: bold;
+  position: relative;
+  margin-right: 10px;
+  width: 130px;
+  top: 7px;
+  text-align: right;
+}
+
+.Msg2 {
+  /* // changepassword */
+  position: relative;
+  left: 115px;
+  color: rgb(255, 0, 43);
+  font-size: 13px;
+  margin-top: 3px;
+  font-weight: bold;
+}
+
+.changepasswordTextarea {
+  resize: none;
+}
+
+.editprofileBtn {
+  position: relative;
+  top: 15px;
+  left: 113px;
+}
+
+.editprofileForgotPassword {
+  position: relative;
+  top: 40px;
+  right: 103px;
+  height: 10px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.pa {
+  text-decoration: none;
+}
+
+.modalMainpPoint {
+  position: absolute;
+  top: calc(50vh - 80px);
+  /* justify-content: center; */
+  align-items: center;
+  width: 400px;
+  height: 140px;
+  border-radius: 0.7rem;
+  background-color: white;
+  left: calc(50vw - 200px);
+}
+
+.modalEditprofilePoint {
+  position: absolute;
+  top: calc(50vh - 100px);
+  /* // justify-content: center; */
+  align-items: center;
+  width: 400px;
+  height: 270px;
+  border-radius: 0.7rem;
+  background-color: white;
+  left: calc(50vw - 200px);
+  height: 140px;
 }

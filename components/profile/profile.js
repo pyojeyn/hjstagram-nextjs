@@ -31,6 +31,7 @@ const Profile = (props) => {
         width={30}
         height={33.64}
         onClick={() => {
+          console.log("엥 뭐지 ?");
           gearChange(!gear);
         }}
       />
@@ -95,7 +96,12 @@ const Profile = (props) => {
         <div className={styles.profileProfileName}>{props.introment}</div>
       </div>
 
-      {gear && <ModalProfileGear closeGear={() => gearChange(!gear)} />}
+      {gear && (
+        <ModalProfileGear
+          closeGear={() => gearChange(!gear)}
+          onLogout={props.onLogout}
+        />
+      )}
 
       {isShowProfile && (
         <ModalProfileChange

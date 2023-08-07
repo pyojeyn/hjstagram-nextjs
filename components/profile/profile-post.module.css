@@ -39,7 +39,7 @@
   z-index: 999;
 }
 .modalMainPoint {
-  P {
+  .modalMainP {
     /* color: $modal-text; */
     font-weight: bolder;
     text-align: center;

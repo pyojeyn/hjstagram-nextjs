@@ -13,10 +13,11 @@ const ProfilePost = (props) => {
         {props.posts &&
           props.posts.map((post) => {
             return (
-              <div className={styles.profileDivImgbox}>
+              <div className={styles.profileDivImgbox} key={post._id}>
                 <Image
                   className={styles.profileDivImg}
                   src={post.fileurls[0]}
+                  alt={post.fileurls[0]}
                   onClick={() => {
                     console.log("what is saveIDandModal?");
                   }}
@@ -33,7 +34,7 @@ const ProfilePost = (props) => {
           >
             <div className={styles.modalMainPointText}>
               <div>
-                <p>게시물을 삭제 하시겠습니까?</p>
+                <p className={styles.modalMainP}>게시물을 삭제 하시겠습니까?</p>
               </div>
 
               <button

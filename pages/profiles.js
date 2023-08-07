@@ -4,6 +4,8 @@ import Profile from "@/components/profile/profile";
 import { wrapper } from "@/store";
 import jwt from "jsonwebtoken";
 import { userActions } from "@/store/user-slice";
+import ProfilePost from "@/components/profile/profile-post";
+import { useRouter } from "next/router";
 
 /**
  *  Redux 스토어의 상태가 변경되면
@@ -14,6 +16,23 @@ import { userActions } from "@/store/user-slice";
 
 function ProfilePage(props) {
   // 여기서 user 가 또 바뀔때 그 팔로잉 팔로우 수 게시물수 바꿔주는 API 해야됨.
+
+  const router = useRouter();
+
+  async function onLogoutHandler() {
+    console.log("Logout!");
+    const response = await fetch("/api/auth/logout", {
+      method: "POST",
+    });
+
+    const status = response.status;
+    console.log("logout.status", status);
+
+    if (status === 204) {
+      router.push("/");
+    }
+  }
+
   return (
     <>
       <Head>
@@ -21,7 +40,8 @@ function ProfilePage(props) {
         <meta name="hjstagram" content="this is your profile" />
       </Head>
       <Header />
-      <Profile user={props.user} />
+      <Profile user={props.user} onLogout={onLogoutHandler} />
+      <ProfilePost />
     </>
   );
 }

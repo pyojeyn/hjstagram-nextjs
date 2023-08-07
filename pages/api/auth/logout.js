@@ -7,7 +7,7 @@ const logoutHandler = async (req, res) => {
   );
   res.status(204).end();
 
-  console.log("로그아웃된거 맞아 ?");
+  console.log("08-06 Logout");
 };
 
 export default logoutHandler;
